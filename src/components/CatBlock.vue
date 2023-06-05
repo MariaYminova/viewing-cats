@@ -2,8 +2,8 @@
   <div class="cat-block">
   <div class="cat-block__cat-card" v-for="cat in cats">
     <img class="cat-block__img" :src="cat.url" alt="" />
-    <div class="cat-block__breed">{{ cat.breed }}</div>
-    <div class="cat-block__description">{{ cat.description }}</div>
+    <div class="cat-block__breed">{{ cat.breeds[0].name }}</div> 
+    <div class="cat-block__description">{{ cat.breeds[0].description }}</div>
   </div></div>
 </template>
 
@@ -55,9 +55,10 @@
     &__description {
       margin: 0 10px;
       max-width: 297px;
-      max-height: 60px;
+      max-height: 69px;
       font-size: 16px;
-      overflow-wrap: break-word;
+      
+      overflow: hidden;
     }
   }
 </style>

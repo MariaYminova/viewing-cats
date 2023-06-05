@@ -10,6 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "query-string": "^8.1.0",
     "save-dev": "^0.0.1-security",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"

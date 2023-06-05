@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <img src="src/icon/icon-logo.svg" alt="" />
+    <img src="@/assets/icon/icon-logo.svg" alt="" />
     <div class="page-header__line"></div>
   </div>
 </template>
