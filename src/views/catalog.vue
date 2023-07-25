@@ -1,63 +1,58 @@
 <template>
-  <div class="catalog">
-    <div class="container">
-      <PageHeader />
-      <CatFilter />
-      <CatBlock :cats="cats" />
-    </div>
+  <div v-if="isLoading">
+    <Loader />
+  </div>
+  <div v-else>
+    <CatFilterCopy :cats="cats" />
   </div>
 </template>
 
-<script lang="js">
-  import queryString from 'query-string' // для работы этого кода необходимо установить зависимость. Она позволяет получать и обрабатывать URL запросы такие как queryString.stringify
-  import CatBlock from '@/components/CatBlock.vue'
-  import PageHeader from '@/components/PageHeader.vue'
-  import CatFilter from '@/components/CatFilter.vue' 
- 
+<script>
+  import queryString from 'query-string'
+  import Loader from '@/components/Loader.vue'
+  import CatFilterCopy from '@/components/CatFilterCopy.vue'
 
   export default {
     name: 'Catalog',
 
     components: {
-      CatBlock,
-      PageHeader,
-      CatFilter
+      CatFilterCopy,
+      Loader
     },
 
     created() {
-    this.getCats()
-  }, // Блок created() является хуком жизненного цикла, который выполняется автоматически при создании компонента или объекта. В данном случае, когда компонент или объект создаются, функция getCats() вызывается внутри блока created(). Хуки жизненного цикла (lifecycle hooks) являются функциями, предоставляемыми фреймворками для выполнения определенных действий на различных этапах жизненного цикла компонента или объекта. Жизненный цикл представляет собой последовательность этапов, начиная от создания и инициализации до удаления или обновления.Хуки жизненного цикла позволяют разработчику добавлять пользовательский код для выполнения определенных задач на различных этапах жизненного цикла. Некоторые общие примеры хуков жизненного цикла в различных фреймворках:Vue.js: created, mounted, updated, destroyed. вызывается после создания компонента или объекта и предоставляет возможность выполнить определенные действия, такие как выполнение запросов к API, установку обработчиков событий, инициализацию данных и другие операции, которые необходимо выполнить при инициализации компонента или объекта.
+      this.getCats()
+    },
 
     data: () => ({
-      cats: [
-        
-      ]
+      cats: [],
+      isLoading: true
     }),
 
     methods: {
-      async getCats() { //async ассинхронный запрос, означающий, что функция getCats не будет выполненна, пока не получит данные с сервера.Это необходимо для того чтобы не блокировать работу ожиданием ответа
-
+      async getCats() {
         const params = queryString.stringify({
-          limit: 12,
+          limit: 99,
           has_breeds: 1,
           order: 'RAND'
-        }) //Метод "stringify" используется для преобразования объекта "params" в сериализованную строку, которая может быть добавлена к URL-адресу запроса в качестве параметров, в этом примере это количество изображений тип фильтрации и тд
-
+        })
 
         try {
           const response = await fetch(`https://api.thecatapi.com/v1/images/search?${params}`, {
             headers: {
-              'x-api-key': "live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96",
-            },
-          }) // первая часть метода TRY-CATCH которая имеет две части кода: 1) TRY - действия которые необходимо совершить. В этом коде мы ожидаем (await) данные от АРI  по URL + заданные ранее параметры запроса, которые добавяться в наш URL через ${params}, в части headers мы регестрируем ключ для аутентификации и авторизации запроса к API.
+              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
+            }
+          })
 
-          const cats = await response.json() // await используется для ожидания завершения асинхронной операции response.json(). Ключевое слово await может быть использовано только внутри асинхронной функции, и оно ожидает завершения промиса, в данном случае - завершения преобразования ответа в формате JSON.
-
-          this.cats = cats // этот код выполняет преобразование полученного ответа от сервера в формате JSON и сохраняет его в переменной "cats". Затем, значение переменной "cats" присваивается свойству "this.cats"
+          const cats = await response.json()
+          this.cats = cats
+          this.isLoading = false
+        } catch (error) {
+          console.log(error)
+          this.isLoading = false
         }
-         catch (e) {
-         console.log (error)
-        }}}
+      }
+    }
   }
 </script>
 
@@ -67,10 +62,5 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
-  }
-
-  .container {
-    max-width: 1440px;
-    margin: 0 auto;
   }
 </style>

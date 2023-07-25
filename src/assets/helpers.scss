@@ -107,7 +107,6 @@
 }
 
 .m {
-  
   &-r-5 {
     margin-right: 5px;
   }
@@ -268,21 +267,25 @@
   }
 }
 
+.color {
 
+  &-green {
+    background-color:#4f745e ;
+  }
 
+  &-swamp {
+    background-color:#818656 ;
+  }
 
+  &-mustard {
+    background-color:#b7a56c ;
+  }
 
+  &-gray {
+    background-color:#6d6866 ;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  &-blue {
+    background-color:#334251 ;
+  }
+}

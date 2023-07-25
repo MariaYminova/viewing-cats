@@ -5,15 +5,15 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'catalog',
-      component: () => import('../views/catalog.vue')
+      name: 'Catalog',
+      component: () => import('../views/Catalog.vue')
     },
     {
-      path: '/cat',
-      name: 'catPage',
-      component: () => import('../views/catPage.vue')
+      path: '/cat/:catId', 
+      name: 'CatPage',
+      component: () => import('../views/CatPage.vue')
     },
-   
+  
   ]
 })
 
