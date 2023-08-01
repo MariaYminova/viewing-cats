@@ -116,8 +116,9 @@ body {
   box-sizing: border-box;
   font-weight: 400;
   background-color: rgba(247, 247, 247, 1);
-  padding: 40px 0;
+  padding: 40px 15px;
   overflow-x: hidden;
+
 }
 
 ol,

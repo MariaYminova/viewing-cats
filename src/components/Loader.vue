@@ -4,8 +4,13 @@
   </div>
 </template>
 
-<style lang="scss">
+<script>
+  export default {
+    name: 'Loader'
+  }
+</script>
 
+<style lang="scss">
   $spCol: rgba(95, 120, 123, 1);
 
   body {
@@ -27,7 +32,6 @@
     margin: 20px auto;
   }
 
-  /* Spinner Wave */
   .sp-wave {
     border-radius: 50%;
     position: relative;
@@ -90,7 +94,7 @@
       opacity: 0;
     }
   }
-	
+
   @keyframes spWaveBe {
     from {
       -webkit-transform: scale(1, 1);

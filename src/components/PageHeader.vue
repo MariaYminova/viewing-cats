@@ -8,14 +8,13 @@
 <script></script>
 
 <style lang="scss">
-
   .page-header {
     display: flex;
     justify-content: center;
     margin: 40px 0 100px 0;
     position: relative;
 
-    &__line{
+    &__line {
       height: 2px;
       width: 100%;
       background-color: rgba(95, 120, 123, 1);
