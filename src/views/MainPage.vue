@@ -1,11 +1,11 @@
 <template>
   <CatalogHeader />
   <!-- Директива v-if v-else означает что пока if = true будет отображаться isLoader, когда станет false  отобразиться компонент Catalog -->
-  <div v-if="isLoading">
+  <div v-if="breedsLoading">
     <Loader />
   </div>
   <div v-else>
-    <Catalog :breeds="breeds"  />
+    <Catalog :breeds="breeds" />
   </div>
 </template>
 
@@ -14,6 +14,7 @@
   import Loader from '@/components/Loader.vue'
   import Catalog from '@/components/Catalog.vue'
   import CatalogHeader from '@/components/CatalogHeader.vue'
+  import { mapActions, mapState } from 'vuex'
 
   export default {
     name: 'MainPage',
@@ -25,39 +26,19 @@
     },
     // хук жизенного цикла который обозначает что он будет работать в моменте создания компонента
     created() {
-      this.getCatBreeds()
+      this.$store.dispatch('getBreeds')
     },
 
-    // это объект с информацией data в котором лежит свойство(массив) breeds в которое будет добавляться содержимое в моменте созадния getCatBreeds и isLoading который изначально установлен в положении true.
-    data() {
-      return {
-        breeds: [],
-        isLoading: true
-      }
+    computed: {
+      // ...mapState({
+      //   breeds: (state) => state.breeds,
+      //   isLoading: (state) => state.breedsLoading,
+      //   isLoading: (state) => state.breedsError
+      // })
+
+       ...mapState(['breeds', 'breedsLoading'])
     },
-    //метод getCatBreeds вызвается асинхронно (не будет влиять на работу остального кода).Он сожержит два блока:
-    // 1.try - запрос к апи на получение данных, преобразование из в формат json и присвоение данных внешней переменной breeds данных полученных во внутренней переменной breeds, также в процессе этого когда значение лоадера менятся на false.
-    //2.catch - выполняется в случае если try не сможет отработать и выведет в консоль ошибку
-    methods: {
-      async getCatBreeds() {
-        try {
-          const response = await fetch('https://api.thecatapi.com/v1/breeds', {
-            headers: {
-              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
-            }
-          })
-          const breeds = await response.json()
-          this.breeds = breeds
-          this.isLoading = false
-        } catch (error) {
-          console.log(error)
-          this.isLoading = false
-        }
-      }
-    }
   }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

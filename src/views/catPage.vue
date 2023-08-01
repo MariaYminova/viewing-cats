@@ -21,12 +21,12 @@
       this.getCatImg()
     },
 
-    data: (vm) => ({
-      breedId: vm.$route.params.breedId,
+    data: (this) => ({
+      breedId: this.$route.params.breedId,
       breed: {},
       catImg: []
     }),
-
+    
     methods: {
       async getCatData() {
         try {
