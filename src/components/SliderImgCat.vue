@@ -38,12 +38,8 @@
       SwiperSlide
     },
     setup() {
-      const onSwiper = (swiper) => {
-        console.log(swiper)
-      }
-      const onSlideChange = () => {
-        console.log('slide change')
-      }
+      const onSwiper = (swiper) => {}
+      const onSlideChange = () => {}
       return {
         onSwiper,
         onSlideChange,
@@ -79,9 +75,18 @@
   .swiper-button-prev {
     color: rgb(234, 179, 84);
   }
+  .swiper-pagination-bullet {
+    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
+    display: inline-block;
+    border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+    background: rgb(255, 255, 255);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.5);
+  }
 
   .swiper-pagination-bullet-active {
     background-color: rgb(234, 179, 84);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
   }
 
   @media (max-width: 850px) {
@@ -89,6 +94,13 @@
       &__img {
         height: 300px;
       }
+    }
+    .swiper-button-next {
+      display: none;
+    }
+
+    .swiper-button-prev {
+      display: none;
     }
   }
 </style>

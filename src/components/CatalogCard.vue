@@ -1,5 +1,4 @@
 <template>
-  <!-- router-link - это тег котрый будет создавать ссылку, а :to - атрибут на котрый будет указывать ссылка, тут будет получаться id котнкретной породы  -->
   <router-link :to="`/breeds/${breed.id}`" class="catalog-card">
     <div v-if="catImageOne.url">
       <img class="catalog-card--img" :src="catImageOne.url" :alt="breed.name" />
@@ -37,7 +36,7 @@
             `https://api.thecatapi.com/v1/images/${this.breed.reference_image_id}`,
             {
               headers: {
-                'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
+                'x-api-key': 'live_XkZwFcyIs2SHsKR9rdMIRut68DSZSKUqYhVJGi5BMX7ICk55sHPYaR6GCRZkkPyH'
               }
             }
           )
@@ -59,6 +58,7 @@
     padding: 10px 10px 20px 10px;
     border-radius: 14px;
     border: 1px solid rgba(95, 120, 123, 1);
+    cursor: url('@/assets/icon/icon-cursor-pointer.svg'),auto;
 
     &--img {
       height: 300px;

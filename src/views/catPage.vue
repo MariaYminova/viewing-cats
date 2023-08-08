@@ -6,8 +6,10 @@
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex'
   import SliderImgCat from '@/components/SliderImgCat.vue'
   import CatCardInfo from '@/components/CatCardInfo.vue'
+
   export default {
     name: 'CatPage',
 
@@ -15,24 +17,29 @@
       SliderImgCat,
       CatCardInfo
     },
-// эти методы мы вызываем с параметром this.$route.params.breedId который будет получать id породы из роутера
+
     created() {
       this.getCatData()
-      this.getCatImg()
+      this.fetchData()
+    },
+
+    computed: {
+      ...mapState(['catImg'])
     },
 
     data: (vm) => ({
       breedId: vm.$route.params.breedId,
-      breed: {},
-      catImg: []
+      breed: {}
     }),
 
     methods: {
+      ...mapActions(['getCatImg']),
+
       async getCatData() {
         try {
           const response = await fetch(`https://api.thecatapi.com/v1/breeds/${this.breedId}`, {
             headers: {
-              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
+              'x-api-key': 'live_XkZwFcyIs2SHsKR9rdMIRut68DSZSKUqYhVJGi5BMX7ICk55sHPYaR6GCRZkkPyH'
             }
           })
 
@@ -42,21 +49,8 @@
         } catch (e) {}
       },
 
-      async getCatImg() {
-        try {
-          const response = await fetch(
-            `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${this.breedId}`,
-            {
-              headers: {
-                'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
-              }
-            }
-          )
-
-          const data = await response.json()
-
-          this.catImg = data
-        } catch (e) {}
+      async fetchData() {
+        await this.getCatImg(this.breedId)
       }
     }
   }
@@ -68,11 +62,13 @@
     border: 2px solid rgb(95, 120, 123);
     border-radius: 14px;
     padding: 20px;
+    cursor: url('@/assets/icon/icon-cursor-pointer.svg'),auto;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 950px) {
     .cat-page {
       display: block;
+      padding: 9px;
     }
   }
 </style>
