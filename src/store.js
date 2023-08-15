@@ -1,11 +1,16 @@
 import { createStore } from 'vuex'
+import moduleFavorites from './ModuleFavorites'
 
 const store = createStore({
+  modules: {
+    moduleFavorites
+  },
   state: {
     catImg: [],
     breedsLoading: false,
     breedsError: false,
-    breeds: []
+    breeds: [],
+    
   },
   mutations: {
     setCatImg(state, data) {
@@ -59,6 +64,7 @@ const store = createStore({
 
       commit('setBreedsLoading', false)
     }
+    
   }
 })
 

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import CatalogCard from './CatalogCard.vue'
+  import CatalogCard from '@/components/CatalogCard.vue'
 
   export default {
     components: {

@@ -4,6 +4,9 @@
       Cat
       <div class="catalog-header__heading--green">alog</div>
     </div>
+    <router-link :to="`/CatFavorites`">
+      <button class="catalog-header__btn-favorites"></button>
+    </router-link>
   </div>
 </template>
 
@@ -16,6 +19,7 @@
 <style lang="scss">
   .catalog-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 60px;
 
@@ -42,6 +46,12 @@
       font-weight: 700;
       border: 0;
     }
+
+    // &__btn-favorites{
+    //   background-image: url('@/assets/icon/icon-favorites.svg');
+    //   width: 70px;
+    //   height: 70px;
+    // }
   }
 
   @media (max-width: 850px) {

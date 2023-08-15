@@ -11,14 +11,16 @@
   >
     <swiper-slide class="swiper-slide my-swiper__slide" v-for="image in catImg" :key="image.id">
       <img class="my-swiper__img" :src="image.url" />
+      <ButtonLike :imageId="image.id" />
     </swiper-slide>
   </swiper>
 </template>
 
 <script>
+  import ButtonLike from '@/components/UI/ButtonLike.vue'
+
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
-
   import 'swiper/css'
   import 'swiper/css/navigation'
   import 'swiper/css/pagination'
@@ -35,7 +37,8 @@
 
     components: {
       Swiper,
-      SwiperSlide
+      SwiperSlide,
+      ButtonLike
     },
     setup() {
       const onSwiper = (swiper) => {}
@@ -62,6 +65,7 @@
     &__img {
       width: 100%;
       height: 100%;
+      position: absolute;
       object-fit: cover;
       border-radius: 14px;
       margin-right: 20px;

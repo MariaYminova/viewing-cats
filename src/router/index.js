@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'CatPage',
       component: () => import('../views/CatPage.vue')
     },
+     {
+       path: '/CatFavorites', 
+       name: 'CatFavorites',
+       component: () => import('../views/CatFavorites.vue')
+     },
   
   ]
 })
