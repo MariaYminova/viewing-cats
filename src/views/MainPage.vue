@@ -1,6 +1,6 @@
 <template>
   <CatalogHeader />
-  <div v-if="isLoading">
+  <div v-if="breedsLoading">
     <Loader />
   </div>
   <Catalog v-else :breeds="breeds" />

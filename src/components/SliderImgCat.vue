@@ -60,12 +60,12 @@
     &__slide {
       max-width: 700px;
       max-height: 450px;
+      position: relative;
     }
 
     &__img {
       width: 100%;
       height: 100%;
-      position: absolute;
       object-fit: cover;
       border-radius: 14px;
       margin-right: 20px;

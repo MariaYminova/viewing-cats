@@ -4,7 +4,7 @@
     <div class="page-header__line">
       <!-- <div>{{ userId }}</div> -->
     </div>
-    <router-link :to="`/CatFavorites`" class="page-header__btn-favorites"> </router-link>
+    <router-link :to="`/Catfavourites`" class="page-header__btn-favourites"> </router-link>
   </div>
 </template>
 
@@ -16,7 +16,7 @@
       ...mapState(['userId'])
     },
     methods: {
-      ...mapActions(['generateAndSetUserId'])
+      ...mapActions('favourites', ['generateAndSetUserId'])
     },
     created() {
       if (!this.userId) {
@@ -42,13 +42,13 @@
       z-index: -1;
     }
 
-    &__btn-favorites {
-      background-image: url(/src/assets/icon/icon-favorites.svg);
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    left: 94%;
-    bottom: -20px;
+    &__btn-favourites {
+      background-image: url(/src/assets/icon/icon-favourites.svg);
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      left: 94%;
+      bottom: -20px;
     }
   }
 </style>

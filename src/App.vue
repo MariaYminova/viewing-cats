@@ -5,12 +5,16 @@
   </div>
 </template>
 
-<script lang="js">
-  import PageHeader from '@/components/PageHeader.vue';
+<script>
+  import PageHeader from '@/components/PageHeader.vue'
 
   export default {
+    created() {
+      this.$store.dispatch('favourites/getfavouritesCat')
+    },
+
     components: {
       PageHeader
     }
-    }
+  }
 </script>
