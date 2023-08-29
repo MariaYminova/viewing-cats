@@ -5,16 +5,19 @@ const store = createStore({
   modules: {
     moduleLike
   },
+
   state: {
     catImg: [],
     breedsLoading: false,
     breedsError: false,
     breeds: []
   },
+
   mutations: {
     setCatImg(state, data) {
       state.catImg = data
     },
+
     setBreedsLoading(state, payload) {
       state.breedsLoading = payload
     },
@@ -27,6 +30,7 @@ const store = createStore({
       state.breeds = payload
     }
   },
+
   actions: {
     async getCatImg({ commit }, breedId) {
       try {
@@ -44,7 +48,8 @@ const store = createStore({
         commit('setCatImg', data)
       } catch (e) {}
     },
-    async getBreeds({ state, commit }) {
+
+    async getBreeds({ commit }) {
       commit('setBreedsError', false)
       commit('setBreedsLoading', true)
 

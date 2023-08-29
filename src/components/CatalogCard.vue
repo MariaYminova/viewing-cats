@@ -1,16 +1,14 @@
 <template>
   <router-link :to="`/breeds/${breed.id}`" class="catalog-card">
-    <div v-if="catImageOne.url">
-      <img class="catalog-card--img" :src="catImageOne.url" :alt="breed.name" />
-    </div>
-    <div v-else>
-      <img class="catalog-card--img-error" src="@/assets/icon/img-cat-und.png" />
-    </div>
+    <img class="catalog-card--img" :src="imgUrl" :alt="breed.name" />
+
     <div class="catalog-card--breed">{{ breed.name }}</div>
   </router-link>
 </template>
 
 <script>
+  import placeholder from '@/assets/icon/img-cat-und.png'
+
   export default {
     props: {
       breed: {
@@ -29,8 +27,18 @@
       }
     },
 
+    computed: {
+      imgUrl() {
+        return this.breed?.image?.url || this.catImageOne.url || placeholder
+      }
+    },
+
     methods: {
       async getCatImageOne() {
+        if (this.breed?.image?.url) {
+          return
+        }
+
         try {
           const response = await fetch(
             `https://api.thecatapi.com/v1/images/${this.breed.reference_image_id}`,

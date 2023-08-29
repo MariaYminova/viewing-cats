@@ -7,21 +7,26 @@ export default {
     likeList: [],
     isLoading: false
   },
+
   mutations: {
     setUserId(state, userId) {
       state.userId = userId
       localStorage.setItem('user_id', userId)
     },
+
     setLike(state, payload) {
       state.likeList = payload
     },
+
     addLike(state, payload) {
       state.likeList.push(payload)
     },
+
     removeLike(state, id) {
       state.likeList = state.likeList.filter((i) => i.id != id)
     }
   },
+
   actions: {
     generateAndSetUserId({ commit }) {
       const timestamp = Date.now().toString(16)
@@ -29,6 +34,7 @@ export default {
       const userId = `${timestamp}-${randomPart}`
       commit('setUserId', userId)
     },
+
     async addLike({ commit, state }, imgId) {
       if (state.isLoading) {
         return
@@ -47,6 +53,7 @@ export default {
         },
         body: rawBody
       })
+
       const { id } = await response.json()
 
       commit('addLike', {
@@ -54,6 +61,7 @@ export default {
         image_id: imgId
       })
     },
+
     async delLike({ state, commit }, favId) {
       if (state.isLoading) {
         return
@@ -74,6 +82,7 @@ export default {
         console.error('Произошла ошибка при удалении из избранного.')
       }
     },
+    
     async getLikeCat({ commit, state }) {
       const params = queryString.stringify({
         sub_id: state.userId

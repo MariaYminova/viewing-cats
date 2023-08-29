@@ -9,10 +9,10 @@
     @swiper="onSwiper"
     @slideChange="onSlideChange"
   >
-    <swiper-slide class="swiper-slide my-swiper__slide" v-for="image in catImg" :key="image.id">
+    <SwiperSlide class="swiper-slide my-swiper__slide" v-for="image in catImg" :key="image.id">
       <img class="my-swiper__img" :src="image.url" />
       <ButtonLike :imageId="image.id" />
-    </swiper-slide>
+    </SwiperSlide>
   </swiper>
 </template>
 
@@ -41,6 +41,7 @@
       SwiperSlide,
       ButtonLike
     },
+    
     setup() {
       const onSwiper = (swiper) => {}
       const onSlideChange = () => {}
