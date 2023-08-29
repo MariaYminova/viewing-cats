@@ -21,6 +21,7 @@
 
   import { Swiper, SwiperSlide } from 'swiper/vue'
   import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
+
   import 'swiper/css'
   import 'swiper/css/navigation'
   import 'swiper/css/pagination'
@@ -58,14 +59,14 @@
     max-height: 450px;
 
     &__slide {
-      max-width: 700px;
-      max-height: 450px;
+      width: 700px;
+      height: 450px;
     }
 
     &__img {
       width: 100%;
       height: 100%;
-      position: absolute;
+
       object-fit: cover;
       border-radius: 14px;
       margin-right: 20px;
@@ -95,8 +96,9 @@
 
   @media (max-width: 850px) {
     .my-swiper {
+      max-height: 300px;
       &__img {
-        height: 300px;
+        max-height: 300px;
       }
     }
     .swiper-button-next {

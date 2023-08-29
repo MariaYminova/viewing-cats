@@ -1,22 +1,28 @@
 <template>
-  <div class="cat-page" v-if="breed">
-    <SliderImgCat :catImg="catImg" />
-    <CatCardInfo :breed="breed" />
+  <div>
+    <div v-if="isLoading"><Loader/></div>
+    <div v-else>
+      <div class="cat-page">
+        <SliderImgCat :catImg="catImg" />
+        <CatCardInfo :breed="breed" />
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
   import { mapState, mapActions } from 'vuex'
   import SliderImgCat from '@/components/SliderImgCat.vue'
   import CatCardInfo from '@/components/CatCardInfo.vue'
+import Loader from '@/components/Loader.vue'
 
   export default {
     name: 'CatPage',
 
     components: {
-      SliderImgCat,
-      CatCardInfo
-    },
+    SliderImgCat,
+    CatCardInfo,
+    Loader
+},
 
     created() {
       this.getCatData()
@@ -39,7 +45,7 @@
         try {
           const response = await fetch(`https://api.thecatapi.com/v1/breeds/${this.breedId}`, {
             headers: {
-              'x-api-key': 'live_XkZwFcyIs2SHsKR9rdMIRut68DSZSKUqYhVJGi5BMX7ICk55sHPYaR6GCRZkkPyH'
+              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
             }
           })
 

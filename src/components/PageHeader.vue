@@ -1,9 +1,7 @@
 <template>
   <div class="page-header">
-    <img src="@/assets/icon/icon-logo.svg" alt="" />
-    <div class="page-header__line">
-      <!-- <div>{{ userId }}</div> -->
-    </div>
+    <router-link :to="`/`"><img src="@/assets/icon/icon-logo.svg" alt="" /></router-link>
+    <div class="page-header__line"></div>
     <router-link :to="`/CatFavorites`" class="page-header__btn-favorites"> </router-link>
   </div>
 </template>
@@ -15,13 +13,21 @@
     computed: {
       ...mapState(['userId'])
     },
+    
+    
     methods: {
-      ...mapActions(['generateAndSetUserId'])
+      ...mapActions('moduleLike', ['generateAndSetUserId']),
+      checkUserId() {
+        const storedUserId = localStorage.getItem('user_id')
+        if (storedUserId) {
+          this.$store.commit('moduleLike/setUserId', storedUserId)
+        } else {
+          this.generateAndSetUserId()
+        }
+      }
     },
     created() {
-      if (!this.userId) {
-        this.generateAndSetUserId()
-      }
+      this.checkUserId()
     }
   }
 </script>
@@ -44,11 +50,11 @@
 
     &__btn-favorites {
       background-image: url(/src/assets/icon/icon-favorites.svg);
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    left: 94%;
-    bottom: -20px;
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      left: 94%;
+      bottom: -20px;
     }
   }
 </style>

@@ -1,20 +1,19 @@
 <template>
-  <div class="catalog-header">
-    <div class="catalog-header__heading">
-      Cat
-      <div class="catalog-header__heading--green">alog</div>
+  <div class="favorites-header">
+    <div class="favorites-header__heading">
+      Favorites
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'CatalogHeader'
+    name: 'FavoritesHeader'
   }
 </script>
 
 <style lang="scss">
-  .catalog-header {
+  .favorites-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

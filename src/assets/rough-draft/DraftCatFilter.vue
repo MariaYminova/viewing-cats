@@ -61,7 +61,7 @@ export default {
       try {
         const responce = await fetch(`https://api.thecatapi.com/v1/breeds`, {
           headers: {
-            'x-api-key': "live_XkZwFcyIs2SHsKR9rdMIRut68DSZSKUqYhVJGi5BMX7ICk55sHPYaR6GCRZkkPyH",
+            'x-api-key': "live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96",
           },
         })
 

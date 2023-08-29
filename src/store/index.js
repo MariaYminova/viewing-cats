@@ -1,16 +1,15 @@
 import { createStore } from 'vuex'
-import moduleFavorites from './ModuleFavorites'
+import moduleLike from './moduleLike'
 
 const store = createStore({
   modules: {
-    moduleFavorites
+    moduleLike
   },
   state: {
     catImg: [],
     breedsLoading: false,
     breedsError: false,
-    breeds: [],
-    
+    breeds: []
   },
   mutations: {
     setCatImg(state, data) {
@@ -35,7 +34,7 @@ const store = createStore({
           `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}`,
           {
             headers: {
-              'x-api-key': 'live_XkZwFcyIs2SHsKR9rdMIRut68DSZSKUqYhVJGi5BMX7ICk55sHPYaR6GCRZkkPyH'
+              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
             }
           }
         )
@@ -52,7 +51,7 @@ const store = createStore({
       try {
         const response = await fetch('https://api.thecatapi.com/v1/breeds', {
           headers: {
-            'x-api-key': state.apiKey
+            'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
           }
         })
         const breeds = await response.json()
@@ -64,7 +63,6 @@ const store = createStore({
 
       commit('setBreedsLoading', false)
     }
-    
   }
 })
 
