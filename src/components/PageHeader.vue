@@ -1,8 +1,8 @@
 <template>
   <div class="page-header">
-    <router-link :to="`/`"><img src="@/assets/icon/icon-logo.svg" alt="" /></router-link>
+    <RouterLink :to="`/`"><img src="@/assets/icon/icon-logo.svg" alt="" /></RouterLink>
     <div class="page-header__line"></div>
-    <router-link :to="`/CatFavorites`" class="page-header__btn-favorites"> </router-link>
+    <RouterLink :to="`/cat-favorites`" class="page-header__btn-favorites"> </RouterLink>
   </div>
 </template>
 
@@ -13,8 +13,7 @@
     computed: {
       ...mapState(['userId'])
     },
-    
-    
+
     methods: {
       ...mapActions('moduleLike', ['generateAndSetUserId']),
       checkUserId() {
@@ -53,8 +52,25 @@
       width: 60px;
       height: 60px;
       position: absolute;
-      left: 94%;
-      bottom: -20px;
+      right: 0px;
+      bottom: -17px;
+
+      &:hover {
+        box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
+        border-radius: 50px;
+      }
+    }
+  }
+
+  @media (max-width: 850px) {
+    .page-header {
+      &__btn-favorites {
+        background-image: url(/src/assets/icon/icon-favorites-mobile.svg);
+        width: 35px;
+        height: 35px;
+        right: 0px;
+        bottom: -6px;
+      }
     }
   }
 </style>

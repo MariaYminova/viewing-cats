@@ -29,20 +29,17 @@ const store = createStore({
   },
   actions: {
     async getCatImg({ commit }, breedId) {
-      try {
-        const response = await fetch(
-          `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}`,
-          {
-            headers: {
-              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
-            }
+      const response = await fetch(
+        `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}`,
+        {
+          headers: {
+            'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
           }
-        )
+        }
+      )
 
-        const data = await response.json()
-
-        commit('setCatImg', data)
-      } catch (e) {}
+      const data = await response.json()
+      commit('setCatImg', data)
     },
     async getBreeds({ state, commit }) {
       commit('setBreedsError', false)

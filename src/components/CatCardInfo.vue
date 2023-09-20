@@ -2,20 +2,21 @@
   <div class="cat-card-info">
     <div class="cat-card-info__breed igra">{{ breed.name }}</div>
     <div class="cat-card-info__description igra">{{ breed.description }}</div>
+    <a class="igra igra-link" :href="breed.wikipedia_url">Link to Wikipedia</a>
     <div class="cat-card-info__params">
-      <div class="cat-card-info__params--block color-green igra igra-white">
+      <div class="cat-card-info__params-block color-green igra igra-white">
         child friendly: {{ breed.child_friendly }}
       </div>
-      <div class="cat-card-info__params--block color-swamp igra igra-white">
+      <div class="cat-card-info__params-block color-swamp igra igra-white">
         dog friendly: {{ breed.dog_friendly }}
       </div>
-      <div class="cat-card-info__params--block color-mustard igra igra-white">
+      <div class="cat-card-info__params-block color-mustard igra igra-white">
         energy level: {{ breed.energy_level }}
       </div>
-      <div class="cat-card-info__params--block color-gray igra igra-white">
+      <div class="cat-card-info__params-block color-gray igra igra-white">
         hairless: {{ breed.hairless }}
       </div>
-      <div class="cat-card-info__params--block color-blue igra igra-white">
+      <div class="cat-card-info__params-block color-blue igra igra-white">
         hypoallergenic: {{ breed.hypoallergenic }}
       </div>
     </div>
@@ -61,12 +62,12 @@
       display: flex;
       flex-wrap: wrap;
       margin-top: 50px;
+    }
 
-      &--block {
-        margin: 0 20px 20px 0;
-        border-radius: 50px;
-        padding: 6px 22px;
-      }
+    &__params-block {
+      margin: 0 20px 20px 0;
+      border-radius: 50px;
+      padding: 6px 22px;
     }
   }
 

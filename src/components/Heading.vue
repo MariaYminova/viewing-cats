@@ -1,15 +1,14 @@
 <template>
   <div class="catalog-header">
     <div class="catalog-header__heading">
-      Cat
-      <div class="catalog-header__heading--green">alog</div>
+      <slot> </slot>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'CatalogHeader'
+    name: 'Heading'
   }
 </script>
 
@@ -26,10 +25,6 @@
       font-size: 56px;
       margin-right: 50px;
       color: rgba(234, 179, 84, 1);
-
-      &--green {
-        color: rgba(95, 120, 123, 1);
-      }
     }
 
     &__block {
@@ -48,6 +43,7 @@
   @media (max-width: 850px) {
     .catalog-header {
       margin-bottom: 30px;
+
       &__heading {
         font-size: 40px;
       }

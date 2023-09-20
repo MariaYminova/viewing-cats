@@ -14,7 +14,7 @@ const router = createRouter({
       component: () => import('../views/CatPage.vue')
     },
      {
-       path: '/CatFavorites', 
+       path: '/cat-favorites', 
        name: 'CatFavorites',
        component: () => import('../views/CatFavorites.vue')
      },

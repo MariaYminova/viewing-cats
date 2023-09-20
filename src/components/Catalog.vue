@@ -1,11 +1,11 @@
 <template>
   <div class="row">
     <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-3 catalog"
+      class="catalog col-xs-12 col-sm-6 col-md-4 col-lg-3"
       v-for="breed in breeds"
       :key="breed.id"
     >
-      <catalog-card :breed="breed" />
+      <CatalogCard :breed="breed" />
     </div>
   </div>
 </template>

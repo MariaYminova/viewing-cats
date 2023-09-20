@@ -5,19 +5,14 @@
     :key="like.id"
   >
     <div class="cat-favorites-card__block">
-      <img
-        class="cat-favorites-card--img"
-        v-if="like.image"
-        :src="like.image.url"
-        :alt="like.image.id"
-      />
-      <img v-else class="cat-favorites-card--img" src="@/assets/icon/img-cat-und.png" />
+      <img class="cat-favorites-card__img" :src="imgUrl(like)" :alt="like.image.id" />
       <ButtonLike :imageId="like.image_id" />
     </div>
   </div>
 </template>
 
 <script>
+  import placeholder from '@/assets/icon/img-cat-und.jpg'
   import { mapActions } from 'vuex'
   import ButtonLike from '@/components/UI/ButtonLike.vue'
 
@@ -33,11 +28,16 @@
         return this.$store.state.moduleLike.likeList
       }
     },
+
     mounted() {
       this.getLikeCat()
     },
+
     methods: {
-      ...mapActions('moduleLike', ['getLikeCat'])
+      ...mapActions('moduleLike', ['getLikeCat']),
+      imgUrl(like) {
+        return like.image.url || placeholder
+      }
     }
   }
 </script>
@@ -53,20 +53,25 @@
       border-radius: 14px;
       position: relative;
       margin-bottom: 18px;
+      
+      &:hover {
+        box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
+      }
     }
 
-    &--img {
+    &__img {
       height: 300px;
       width: 100%;
       border-radius: 14px;
       object-fit: cover;
     }
 
-    &--img-error {
+    &__img-error {
       height: 300px;
       width: 100%;
       border-radius: 14px;
       object-fit: contain;
+      background-color: #fff;
     }
   }
 </style>

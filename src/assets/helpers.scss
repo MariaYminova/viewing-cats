@@ -1,5 +1,5 @@
 .igra {
-  font-family: "Igra Sans";
+  font-family: "Montserrat";
   color: #404040;
   font-size: 16px;
   line-height: 21px;
@@ -51,6 +51,11 @@
 
   &-red {
     color: #fb5b1d;
+  }
+
+  &-link {
+    color: #1964b6;
+    text-decoration: underline;
   }
 }
 
@@ -268,24 +273,23 @@
 }
 
 .color {
-
   &-green {
-    background-color:#4f745e ;
+    background-color: #4f745e;
   }
 
   &-swamp {
-    background-color:#818656 ;
+    background-color: #818656;
   }
 
   &-mustard {
-    background-color:#b7a56c ;
+    background-color: #b7a56c;
   }
 
   &-gray {
-    background-color:#6d6866 ;
+    background-color: #6d6866;
   }
 
   &-blue {
-    background-color:#334251 ;
+    background-color: #334251;
   }
 }

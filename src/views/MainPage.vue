@@ -1,17 +1,20 @@
 <template>
-  <CatalogHeader />
+  <Heading>
+    Cat
+    <div class="green-label">alog</div>
+  </Heading>
   <div v-if="breedsLoading">
     <Loader />
   </div>
   <Catalog v-else :breeds="visibleBreeds" />
-  <ButtonMore v-if="hasMoreBreeds" @click="loadMoreBreeds" />
+  <ButtonMore v-if="!breedsLoading && hasMoreBreeds" @click="loadMoreBreeds" />
 </template>
 
 <script>
   import ButtonMore from '@/components/UI/ButtonMore.vue'
   import Loader from '@/components/Loader.vue'
   import Catalog from '@/components/Catalog.vue'
-  import CatalogHeader from '@/components/CatalogHeader.vue'
+  import Heading from '@/components/Heading.vue'
   import { mapState, mapActions } from 'vuex'
 
   export default {
@@ -20,7 +23,7 @@
     components: {
       Catalog,
       Loader,
-      CatalogHeader,
+      Heading,
       ButtonMore
     },
 
@@ -54,3 +57,9 @@
     }
   }
 </script>
+
+<style>
+  .green-label {
+    color: rgba(95, 120, 123, 1);
+  }
+</style>

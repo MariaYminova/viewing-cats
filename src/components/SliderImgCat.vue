@@ -1,5 +1,5 @@
 <template>
-  <swiper
+  <Swiper
     class="my-swiper"
     :modules="modules"
     :slides-per-view="1"
@@ -9,14 +9,15 @@
     @swiper="onSwiper"
     @slideChange="onSlideChange"
   >
-    <swiper-slide class="swiper-slide my-swiper__slide" v-for="image in catImg" :key="image.id">
-      <img class="my-swiper__img" :src="image.url" />
+    <SwiperSlide class="swiper-slide my-swiper__slide" v-for="image in catImg" :key="image.id">
+      <img class="my-swiper__img" :src="imgUrl(image)" />
       <ButtonLike :imageId="image.id" />
-    </swiper-slide>
-  </swiper>
+    </SwiperSlide>
+  </Swiper>
 </template>
 
 <script>
+  import placeholder from '@/assets/icon/img-cat-und.jpg'
   import ButtonLike from '@/components/UI/ButtonLike.vue'
 
   import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -41,6 +42,13 @@
       SwiperSlide,
       ButtonLike
     },
+
+    methods: {
+      imgUrl(image) {
+        return image.url || placeholder
+      }
+    },
+
     setup() {
       const onSwiper = (swiper) => {}
       const onSlideChange = () => {}
@@ -55,7 +63,7 @@
 
 <style lang="scss">
   .my-swiper {
-    max-width: 700px;
+    max-width: 750px;
     max-height: 450px;
 
     &__slide {
@@ -94,13 +102,16 @@
     opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 950px) {
+
     .my-swiper {
       max-height: 300px;
+
       &__img {
         max-height: 300px;
       }
     }
+
     .swiper-button-next {
       display: none;
     }

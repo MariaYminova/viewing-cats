@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex'
+  import { mapActions } from 'vuex'
   export default {
     name: 'ButtonLike',
 
@@ -47,7 +47,7 @@
     right: 20px;
     top: 20px;
     width: 31px;
-      height: 31px;
+    height: 31px;
     background-image: url('@/assets/icon/icon-like-off.svg');
 
     &--remove {

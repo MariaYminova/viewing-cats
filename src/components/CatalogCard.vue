@@ -1,16 +1,13 @@
 <template>
-  <router-link :to="`/breeds/${breed.id}`" class="catalog-card">
-    <div v-if="catImageOne.url">
-      <img class="catalog-card--img" :src="catImageOne.url" :alt="breed.name" />
-    </div>
-    <div v-else>
-      <img class="catalog-card--img-error" src="@/assets/icon/img-cat-und.png" />
-    </div>
-    <div class="catalog-card--breed">{{ breed.name }}</div>
-  </router-link>
+  <RouterLink :to="`/breeds/${breed.id}`" class="catalog-card">
+    <img class="catalog-card__img" :src="imgUrl" :alt="breed.name" />
+    <div class="catalog-card__breed">{{ breed.name }}</div>
+  </RouterLink>
 </template>
 
 <script>
+  import placeholder from '@/assets/icon/img-cat-und.jpg'
+
   export default {
     props: {
       breed: {
@@ -29,24 +26,27 @@
       }
     },
 
+    computed: {
+      imgUrl() {
+        return this.breed?.image?.url || this.catImageOne.url || placeholder
+      }
+    },
+
     methods: {
       async getCatImageOne() {
-        try {
-          const response = await fetch(
-            `https://api.thecatapi.com/v1/images/${this.breed.reference_image_id}`,
-            {
-              headers: {
-                'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
-              }
-            }
-          )
-
-          const data = await response.json()
-
-          this.catImageOne = data
-        } catch (e) {
-          console.error('Error fetching cat image:', e)
+        if (this.breed?.image?.url) {
+          return
         }
+        const response = await fetch(
+          `https://api.thecatapi.com/v1/images/${this.breed.reference_image_id}`,
+          {
+            headers: {
+              'x-api-key': 'live_KFpgScJqF1t6NLPSMjvE7Ot615bVsArzsbnXqnJ1Oh8BetSYzB48dZjdrBTPKc96'
+            }
+          }
+        )
+        const data = await response.json()
+        this.catImageOne = data
       }
     }
   }
@@ -60,21 +60,19 @@
     border: 1px solid rgba(95, 120, 123, 1);
     cursor: url('@/assets/icon/icon-cursor-pointer.svg'), auto;
 
-    &--img {
+    &:hover {
+      box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
+    }
+
+    &__img {
       height: 300px;
       width: 100%;
       border-radius: 14px;
       object-fit: cover;
+      position: relative;
     }
 
-    &--img-error {
-      height: 300px;
-      width: 100%;
-      border-radius: 14px;
-      object-fit: contain;
-    }
-
-    &--breed {
+    &__breed {
       max-width: 297px;
       height: 68px;
       font-size: 30px;
