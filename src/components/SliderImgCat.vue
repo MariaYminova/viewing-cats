@@ -88,6 +88,7 @@
   .swiper-button-prev {
     color: rgb(234, 179, 84);
   }
+  
   .swiper-pagination-bullet {
     width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
     height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
@@ -103,7 +104,6 @@
   }
 
   @media (max-width: 950px) {
-
     .my-swiper {
       max-height: 300px;
 

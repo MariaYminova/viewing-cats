@@ -1,10 +1,10 @@
 <template>
-  <button class="button-more igra igra-white">Show more</button>
+  <button class="button-more montserrat montserrat-white">Show more</button>
 </template>
 
 <script>
   export default {
-    name: 'ButtonMore' 
+    name: 'ButtonMore'
   }
 </script>
 
@@ -18,8 +18,7 @@
     margin-top: 30px;
 
     &:hover {
-        box-shadow: 0px 0px 8px #eab354;
-       
-      }
+      box-shadow: 0px 0px 8px #eab354;
+    }
   }
 </style>

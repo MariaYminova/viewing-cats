@@ -15,10 +15,8 @@
   import CatCardInfo from '@/components/CatCardInfo.vue'
   import Loader from '@/components/Loader.vue'
 
-
   export default {
     name: 'CatPage',
-
 
     components: {
       SliderImgCat,
@@ -26,28 +24,23 @@
       Loader
     },
 
-
     created() {
       this.getCatData()
       this.fetchData()
     },
 
-
     computed: {
       ...mapState(['catImg'])
     },
 
-
     data: (vm) => ({
       breedId: vm.$route.params.breedId,
       breed: {},
-      isLoading:true
+      isLoading: true
     }),
-
 
     methods: {
       ...mapActions(['getCatImg']),
-
 
       async getCatData() {
         try {
@@ -57,15 +50,12 @@
             }
           })
 
-
           const data = await response.json()
 
-
           this.breed = data
-          this.isLoading = false;
+          this.isLoading = false
         } catch (e) {}
       },
-
 
       async fetchData() {
         await this.getCatImg(this.breedId)
@@ -73,7 +63,6 @@
     }
   }
 </script>
-
 
 <style lang="scss">
   .cat-page {
@@ -83,7 +72,6 @@
     padding: 20px;
     cursor: url('@/assets/icon/icon-cursor-pointer.svg'), auto;
   }
-
 
   @media (max-width: 950px) {
     .cat-page {

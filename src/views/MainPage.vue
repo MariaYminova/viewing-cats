@@ -44,6 +44,7 @@
       hasMoreBreeds() {
         return this.breeds.length > this.startIndex + this.visibleBreedsCount
       },
+      
       visibleBreeds() {
         return this.breeds.slice(0, this.startIndex + this.visibleBreedsCount)
       }

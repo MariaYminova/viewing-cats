@@ -53,7 +53,7 @@
       border-radius: 14px;
       position: relative;
       margin-bottom: 18px;
-      
+
       &:hover {
         box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
       }

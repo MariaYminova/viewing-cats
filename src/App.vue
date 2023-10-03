@@ -12,6 +12,7 @@
     created() {
       this.$store.dispatch('moduleLike/getLikeCat')
     },
+    
     components: {
       PageHeader
     }

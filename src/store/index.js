@@ -2,15 +2,18 @@ import { createStore } from 'vuex'
 import moduleLike from './moduleLike'
 
 const store = createStore({
+
   modules: {
     moduleLike
   },
+
   state: {
     catImg: [],
     breedsLoading: false,
     breedsError: false,
     breeds: []
   },
+
   mutations: {
     setCatImg(state, data) {
       state.catImg = data
@@ -27,6 +30,7 @@ const store = createStore({
       state.breeds = payload
     }
   },
+  
   actions: {
     async getCatImg({ commit }, breedId) {
       const response = await fetch(

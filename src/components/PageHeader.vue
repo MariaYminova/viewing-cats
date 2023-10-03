@@ -25,6 +25,7 @@
         }
       }
     },
+
     created() {
       this.checkUserId()
     }
@@ -64,6 +65,7 @@
 
   @media (max-width: 850px) {
     .page-header {
+      
       &__btn-favorites {
         background-image: url(/src/assets/icon/icon-favorites-mobile.svg);
         width: 35px;
