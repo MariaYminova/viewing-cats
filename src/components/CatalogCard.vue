@@ -60,10 +60,6 @@
     border: 1px solid rgba(95, 120, 123, 1);
     cursor: url('@/assets/icon/icon-cursor-pointer.svg'), auto;
 
-    &:hover {
-      box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
-    }
-
     &__img {
       height: 300px;
       width: 100%;
@@ -80,6 +76,14 @@
       color: rgba(234, 179, 84, 1);
       margin: 20px 10px 0px;
       overflow-wrap: break-word;
+    }
+  }
+
+  @media (min-width: 850px) {
+    .catalog-card {
+      &:hover {
+        box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
+      }
     }
   }
 </style>

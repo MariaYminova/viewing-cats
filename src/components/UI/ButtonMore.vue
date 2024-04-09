@@ -16,9 +16,13 @@
     border-radius: 50px;
     padding: 15px 30px;
     margin-top: 30px;
+  }
 
-    &:hover {
-      box-shadow: 0px 0px 8px #eab354;
+  @media (min-width: 850px) {
+    .button-more {
+      &:hover {
+        box-shadow: 0px 0px 8px #eab354;
+      }
     }
   }
 </style>

@@ -63,8 +63,8 @@
 
 <style lang="scss">
   .my-swiper {
-    max-width: 750px;
-    max-height: 450px;
+    width: 1000px;
+    height: 450px;
 
     &__slide {
       width: 700px;
@@ -105,6 +105,7 @@
 
   @media (max-width: 950px) {
     .my-swiper {
+      width: 100%;
       max-height: 300px;
 
       &__img {

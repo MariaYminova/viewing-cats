@@ -2,7 +2,7 @@
   <div class="cat-card-info">
     <div class="cat-card-info__breed montserrat">{{ breed.name }}</div>
     <div class="cat-card-info__description montserrat">{{ breed.description }}</div>
-    <a class="montserrat montserrat-link" :href="breed.wikipedia_url">Link to Wikipedia</a>
+    <a class="montserrat montserrat-link" :href="breed.wikipedia_url" target="_blank"> Link to Wikipedia</a>
     <div class="cat-card-info__params">
       <div class="cat-card-info__params-block color-green montserrat montserrat-white">
         child friendly: {{ breed.child_friendly }}
@@ -52,13 +52,13 @@
       font-size: 36px;
       font-weight: 700;
       color: rgba(234, 179, 84, 1);
-      margin: 20px 0px;
+      margin: 0px 0px 20px;
       overflow-wrap: break-word;
     }
 
     &__description {
       margin: 10px 0;
-      max-width: 450px;
+      max-width: 600px;
       font-size: 16px;
     }
 
@@ -78,6 +78,14 @@
   @media (max-width: 850px) {
     .cat-card-info {
       margin: 0;
+
+      &__breed {
+        margin: 20px 0;
+      }
+
+      &__description {
+        max-width: 100%;
+      }
     }
   }
 </style>

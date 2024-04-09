@@ -1,6 +1,8 @@
 <template>
   <div class="page-header">
-    <RouterLink :to="`/`"><img src="@/assets/icon/icon-logo.svg" alt="" /></RouterLink>
+    <RouterLink :to="`/`"
+      ><img class="page-header__logo" src="@/assets/icon/icon-logo.svg" alt=""
+    /></RouterLink>
     <div class="page-header__line"></div>
     <RouterLink :to="`/cat-favorites`" class="page-header__btn-favorites"> </RouterLink>
   </div>
@@ -39,6 +41,11 @@
     margin: 40px 0 100px 0;
     position: relative;
 
+    &__logo {
+      width: 152px;
+      height: 61px;
+    }
+
     &__line {
       height: 2px;
       width: 100%;
@@ -55,17 +62,22 @@
       position: absolute;
       right: 0px;
       bottom: -17px;
+    }
+  }
 
-      &:hover {
-        box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
-        border-radius: 50px;
+  @media (min-width: 850px) {
+    .page-header {
+      &__btn-favorites {
+        &:hover {
+          box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
+          border-radius: 50px;
+        }
       }
     }
   }
 
   @media (max-width: 850px) {
     .page-header {
-      
       &__btn-favorites {
         background-image: url(/src/assets/icon/icon-favorites-mobile.svg);
         width: 35px;

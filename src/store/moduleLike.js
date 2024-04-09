@@ -1,7 +1,6 @@
 import queryString from 'query-string'
 
 export default {
-
   namespaced: true,
 
   state: {
@@ -75,12 +74,9 @@ export default {
 
       if (response.ok) {
         commit('removeLike', favId)
-        console.log('Изображение удалено из избранного.')
-      } else {
-        console.error('Произошла ошибка при удалении из избранного.')
       }
     },
-    
+
     async getLikeCat({ commit, state }) {
       const params = queryString.stringify({
         sub_id: state.userId

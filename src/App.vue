@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
   import PageHeader from '@/components/PageHeader.vue';
 
   export default {

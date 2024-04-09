@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="toggleLike"
+    @click="debouncedToggleLike"
     :class="[
       'button-like',
       {
@@ -15,8 +15,18 @@
   export default {
     name: 'ButtonLike',
 
+    data() {
+      return {
+        debouncedToggleLike: null
+      }
+    },
+
     props: {
       imageId: String
+    },
+
+    created() {
+      this.debouncedToggleLike = this.debounce(this.toggleLike, 700)
     },
 
     computed: {
@@ -30,6 +40,19 @@
     methods: {
       ...mapActions('moduleLike', ['addLike', 'delLike']),
 
+      debounce(func, wait) {
+        let timeout
+        return function () {
+          const context = this
+          const args = arguments
+          const later = function () {
+            timeout = null
+            func.apply(context, args)
+          }
+          clearTimeout(timeout)
+          timeout = setTimeout(later, wait)
+        }
+      },
       toggleLike() {
         if (this.likeData) {
           this.delLike(this.likeData?.id)

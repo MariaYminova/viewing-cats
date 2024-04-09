@@ -33,11 +33,13 @@
       ...mapState(['catImg'])
     },
 
-    data: (vm) => ({
-      breedId: vm.$route.params.breedId,
-      breed: {},
-      isLoading: true
-    }),
+    data(vm) {
+      return {
+        breedId: vm.$route.params.breedId,
+        breed: {},
+        isLoading: true
+      }
+    },
 
     methods: {
       ...mapActions(['getCatImg']),

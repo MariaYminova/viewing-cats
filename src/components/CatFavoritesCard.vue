@@ -5,42 +5,49 @@
     :key="like.id"
   >
     <div class="cat-favorites-card__block">
-      <img class="cat-favorites-card__img" :src="imgUrl(like)" :alt="like.image.id" />
+      
+      <img class="cat-favorites-card__img" :src="imgUrl(like)" :alt="getLikeImageId(like)" />
+     
       <ButtonLike :imageId="like.image_id" />
     </div>
   </div>
 </template>
 
 <script>
-  import placeholder from '@/assets/icon/img-cat-und.jpg'
-  import { mapActions } from 'vuex'
-  import ButtonLike from '@/components/UI/ButtonLike.vue'
+import placeholder from '@/assets/icon/img-cat-und.jpg'
+import { mapActions } from 'vuex'
+import ButtonLike from '@/components/UI/ButtonLike.vue'
 
-  export default {
-    name: 'CatFavoritesCard',
+export default {
+  name: 'CatFavoritesCard',
 
-    components: {
-      ButtonLike
+  components: {
+    ButtonLike
+  },
+
+  computed: {
+    likes() {
+      return this.$store.state.moduleLike.likeList
+    }
+  },
+
+  mounted() {
+    this.getLikeCat()
+  },
+
+  methods: {
+    ...mapActions('moduleLike', ['getLikeCat']),
+    imgUrl(like) {
+      return (like.image && like.image.url) || placeholder
     },
-
-    computed: {
-      likes() {
-        return this.$store.state.moduleLike.likeList
-      }
-    },
-
-    mounted() {
-      this.getLikeCat()
-    },
-
-    methods: {
-      ...mapActions('moduleLike', ['getLikeCat']),
-      imgUrl(like) {
-        return like.image.url || placeholder
-      }
+    getLikeImageId(like) {
+      return (like.image && like.image.id) || 'Cat Image'
     }
   }
+}
 </script>
+
+
 
 <style lang="scss">
   .cat-favorites-card {
@@ -53,10 +60,6 @@
       border-radius: 14px;
       position: relative;
       margin-bottom: 18px;
-
-      &:hover {
-        box-shadow: 0px 0px 8px rgba(95, 120, 123, 0.507);
-      }
     }
 
     &__img {
