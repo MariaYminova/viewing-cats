@@ -1,0 +1,1 @@
+import{_ as a,o as s,c as t,b as o,x as n}from"./index-477ff7e4.js";const _={name:"Heading"},c={class:"catalog-header"},d={class:"catalog-header__heading"};function r(e,i,l,p,g,f){return s(),t("div",c,[o("div",d,[n(e.$slots,"default")])])}const u=a(_,[["render",r]]);export{u as H};
